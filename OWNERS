@@ -1,7 +1,8 @@
 approvers:
   - technical-oversight-committee
   - knative-release-leads
-# TODO: fill in the owning WG
+  - eventing-wg-leads
+  - eventing-writers
 
 # Reviewers are suggested from the reviewers list first, then the approvers
 # list. To add reviewers while spreading the load among existing approvers,
