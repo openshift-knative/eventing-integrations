@@ -45,6 +45,7 @@
         <module>aws-sqs-source</module>
         <module>aws-ddb-streams-source</module>
         <module>aws-s3-sink</module>
+        <module>aws-sqs-sink</module>
         <module>log-sink</module>
     </modules>
 
