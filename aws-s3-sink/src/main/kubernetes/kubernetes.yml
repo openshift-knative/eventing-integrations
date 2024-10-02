@@ -14,4 +14,3 @@ spec:
       apiVersion: v1
       kind: Service
       name: kn-connector-aws-s3-sink
-    uri: /events

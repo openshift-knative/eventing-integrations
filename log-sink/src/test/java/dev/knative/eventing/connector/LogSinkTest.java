@@ -46,7 +46,7 @@ public class LogSinkTest {
         tc.when(
             http().client(knativeTrigger)
                     .send()
-                    .post("/events")
+                    .post("/")
                     .message()
                     .body("Timer source event!")
                     .header("ce-id", "@matches([0-9A-Z]{15}-[0-9]{16})@")

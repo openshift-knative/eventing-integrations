@@ -364,7 +364,6 @@ spec:
       apiVersion: v1
       kind: Service
       name: kn-connector-log-sink
-    uri: /events
 ----
 
 The trigger for example filters the events by its type `ce-type=dev.knative.connector.event.timer`.

@@ -4,7 +4,7 @@
       "name": "default",
       "type": "event",
       "endpointKind": "source",
-      "path": "/events",
+      "path": "/",
       "objectApiVersion": "eventing.knative.dev/v1",
       "objectKind": "Broker",
       "objectName": "default",

@@ -83,7 +83,6 @@ spec:
       apiVersion: v1
       kind: Service
       name: kn-connector-${kamelet-name}-sink
-    uri: /events
 ----
 
 == Configuration
