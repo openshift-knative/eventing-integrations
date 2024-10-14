@@ -11,7 +11,7 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>connector-log-sink</artifactId>
+    <artifactId>log-sink</artifactId>
     <name>Knative Connectors :: Log Sink</name>
 
     <dependencies>

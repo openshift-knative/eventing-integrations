@@ -11,7 +11,7 @@
     <relativePath>../pom.xml</relativePath>
   </parent>
 
-  <artifactId>connector-aws-ddb-streams-source</artifactId>
+  <artifactId>aws-ddb-streams-source</artifactId>
   <name>Knative Connectors :: AWS DDB Streams Source</name>
 
   <dependencies>
