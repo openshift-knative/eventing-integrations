@@ -23,14 +23,18 @@ COPY . .
 
 RUN mvn package -pl=aws-sqs-source -Drelease -am -DskipTests -Deditorconfig.skip --no-transfer-progress
 
-RUN mkdir /app && cp /build/aws-sqs-source/target/aws-sqs-source-1.0-SNAPSHOT.jar /app/app.jar
-
 # We use the generated JDK from the "builder" image, so we can just go with the ubi-minimal
 FROM registry.access.redhat.com/ubi8/openjdk-21-runtime as running
 
 USER 185
 
-COPY --from=builder /app /app
+COPY --from=builder --chown=185 /build/aws-sqs-source/target/quarkus-app/lib/ /deployments/lib/
+COPY --from=builder --chown=185 /build/aws-sqs-source/target/quarkus-app/*.jar /deployments/
+COPY --from=builder --chown=185 /build/aws-sqs-source/target/quarkus-app/app/ /deployments/app/
+COPY --from=builder --chown=185 /build/aws-sqs-source/target/quarkus-app/quarkus/ /deployments/quarkus/
+
 COPY LICENSE /licenses/
 
-ENTRYPOINT ["java", "-jar", "/app/app.jar"]
+ENV JAVA_OPTS="-Dquarkus.http.host=0.0.0.0 -Djava.util.logging.manager=org.jboss.logmanager.LogManager"
+
+ENTRYPOINT ["java", "-jar", "/deployments/quarkus-run.jar"]
