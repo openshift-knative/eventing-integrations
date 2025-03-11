@@ -15,15 +15,12 @@ COPY log-sink/pom.xml log-sink/pom.xml
 COPY timer-source/pom.xml timer-source/pom.xml
 COPY tools/ tools/
 
-# Install dependencies.
-# consecutive builds.
 RUN mvn install -am -DskipTests -Drelease -Dlicense.skip -Deditorconfig.skip --no-transfer-progress
 
 COPY . .
 
 RUN mvn package -pl=aws-sqs-sink -Drelease -am -DskipTests -Deditorconfig.skip --no-transfer-progress
 
-# We use the generated JDK from the "builder" image, so we can just go with the ubi-minimal
 FROM registry.access.redhat.com/ubi8/openjdk-21-runtime as running
 
 USER 185
