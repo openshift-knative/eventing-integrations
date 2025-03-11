@@ -1,0 +1,159 @@
+version: 2
+updates:
+    - package-ecosystem: gomod
+      directories:
+        - /
+      schedule:
+        interval: weekly
+      ignore:
+        - dependency-name: knative.dev/*
+        - dependency-name: k8s.io/*
+          update-types:
+            - version-update:semver-major
+            - version-update:semver-minor
+        - dependency-name: github.com/openshift/*
+          update-types:
+            - version-update:semver-major
+            - version-update:semver-minor
+        - dependency-name: sigs.k8s.io/controller-runtime
+          update-types:
+            - version-update:semver-major
+            - version-update:semver-minor
+      groups:
+        major:
+            update-types:
+                - major
+            patterns:
+                - '*'
+            applies-to: version-updates
+            exclude-patterns:
+                - knative.dev/*
+                - istio.io/*
+                - k8s.io/*
+                - github.com/openshift/*
+                - sigs.k8s.io/controller-runtime*
+        minor:
+            update-types:
+                - minor
+            patterns:
+                - '*'
+            applies-to: version-updates
+            exclude-patterns:
+                - knative.dev/*
+                - k8s.io/*
+                - github.com/openshift/*
+                - sigs.k8s.io/controller-runtime*
+                - istio.io/*
+        patch:
+            update-types:
+                - patch
+            patterns:
+                - '*'
+            applies-to: version-updates
+            exclude-patterns:
+                - istio.io/*
+        security:
+            update-types:
+                - patch
+                - minor
+                - major
+            patterns:
+                - '*'
+            applies-to: security-updates
+      target-branch: release-v1.16
+      commit-message:
+        prefix: '[release-v1.16][gomod]'
+      open-pull-requests-limit: 10
+    - package-ecosystem: maven
+      directories:
+        - /
+      schedule:
+        interval: weekly
+      ignore:
+        - dependency-name: io.quarkus*
+          update-types:
+            - version-update:semver-major
+            - version-update:semver-minor
+        - dependency-name: com.redhat.quarkus.platform*
+          update-types:
+            - version-update:semver-major
+            - version-update:semver-minor
+        - dependency-name: io.vertx*
+          update-types:
+            - version-update:semver-major
+            - version-update:semver-minor
+      groups:
+        major:
+            update-types:
+                - major
+            patterns:
+                - '*'
+            applies-to: version-updates
+            exclude-patterns:
+                - io.vertx*
+                - com.redhat.quarkus.platform*
+                - io.quarkus*
+        minor:
+            update-types:
+                - minor
+            patterns:
+                - '*'
+            applies-to: version-updates
+            exclude-patterns:
+                - io.vertx*
+                - com.redhat.quarkus.platform*
+                - io.quarkus*
+        patch:
+            update-types:
+                - patch
+            patterns:
+                - '*'
+            applies-to: version-updates
+        security:
+            update-types:
+                - patch
+                - minor
+                - major
+            patterns:
+                - '*'
+            applies-to: security-updates
+      target-branch: release-v1.16
+      commit-message:
+        prefix: '[release-v1.16][maven]'
+      open-pull-requests-limit: 10
+    - package-ecosystem: npm
+      directories:
+        - /transform-jsonata
+      schedule:
+        interval: weekly
+      groups:
+        major:
+            update-types:
+                - major
+            patterns:
+                - '*'
+            applies-to: version-updates
+        minor:
+            update-types:
+                - minor
+            patterns:
+                - '*'
+            applies-to: version-updates
+        patch:
+            update-types:
+                - patch
+            patterns:
+                - '*'
+            applies-to: version-updates
+        security:
+            update-types:
+                - patch
+                - minor
+                - major
+            patterns:
+                - '*'
+            applies-to: security-updates
+      target-branch: release-v1.16
+      commit-message:
+        prefix: '[release-v1.16][npm]'
+      open-pull-requests-limit: 10
