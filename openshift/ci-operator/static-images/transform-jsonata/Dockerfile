@@ -1,4 +1,7 @@
-FROM registry.access.redhat.com/ubi8/nodejs-20 AS builder
+ARG NODE_BUILDER=registry.access.redhat.com/ubi8/nodejs-20
+ARG NODE_RUNTIME=registry.access.redhat.com/ubi8/nodejs-20
+
+FROM $NODE_BUILDER AS builder
 
 # Set working directory
 WORKDIR /app
@@ -15,16 +18,33 @@ RUN npm install --frozen-lockfile
 COPY --chown=1001:0 transform-jsonata/ .
 
 # Use a minimal base image for runtime
-FROM registry.access.redhat.com/ubi8/nodejs-20
+FROM $NODE_RUNTIME
+
+ARG VERSION=""
 
 # Set working directory
 WORKDIR /app
+
+LABEL \
+      com.redhat.component="openshift-serverless-1-kn-eventing-integrations-transform-jsonata-rhel8-container" \
+      name="openshift-serverless-1/kn-eventing-integrations-transform-jsonata-rhel8" \
+      version=$VERSION \
+      release=$VERSION \
+      summary="Red Hat OpenShift Serverless 1 Eventing Integrations Transform JSONata" \
+      maintainer="serverless-support@redhat.com" \
+      description="Red Hat OpenShift Serverless 1 Eventing Integrations Transform JSONata" \
+      io.k8s.display-name="Red Hat OpenShift Serverless 1 Eventing Integrations Transform JSONata" \
+      io.k8s.description="Red Hat OpenShift Serverless Eventing Integrations Transform JSONata" \
+      io.openshift.tags=transform-jsonata
 
 # Copy built files and dependencies
 COPY --from=builder --chown=1001:0 /app/package.json package.json
 COPY --from=builder --chown=1001:0 /app/package-lock.json package-lock.json
 COPY --from=builder --chown=1001:0 /app/jsonata.js jsonata.js
 COPY --from=builder --chown=1001:0 /app/node_modules node_modules
+
+
+COPY LICENSE /licenses/
 
 # Switch to non-root user
 USER 1001
