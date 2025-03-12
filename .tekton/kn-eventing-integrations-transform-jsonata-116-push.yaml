@@ -10,14 +10,14 @@ metadata:
   creationTimestamp: null
   labels:
     appstudio.openshift.io/application: serverless-operator-136
-    appstudio.openshift.io/component: kn-eventing-integrations-aws-sqs-source-116
+    appstudio.openshift.io/component: kn-eventing-integrations-transform-jsonata-116
     pipelines.appstudio.openshift.io/type: build
-  name: kn-eventing-integrations-aws-sqs-source-116-on-push
+  name: kn-eventing-integrations-transform-jsonata-116-on-push
   namespace: ocp-serverless-tenant
 spec:
   params:
     - name: dockerfile
-      value: openshift/ci-operator/static-images/aws-sqs-source/hermetic/Dockerfile
+      value: openshift/ci-operator/static-images/transform-jsonata/Dockerfile
     - name: build-args
       value:
         - GO_BUILDER=brew.registry.redhat.io/rh-osbs/openshift-golang-builder:rhel_8_golang_1.23
@@ -32,7 +32,7 @@ spec:
     - name: hermetic
       value: "true"
     - name: output-image
-      value: quay.io/redhat-user-workloads/ocp-serverless-tenant/serverless-operator-136/kn-eventing-integrations-aws-sqs-source:{{revision}}
+      value: quay.io/redhat-user-workloads/ocp-serverless-tenant/serverless-operator-136/kn-eventing-integrations-transform-jsonata:{{revision}}
     - name: revision
       value: '{{revision}}'
     - name: additional-tags
@@ -52,7 +52,7 @@ spec:
             limits:
               memory: 4Gi
   pipelineRef:
-    name: docker-java-build
+    name: docker-build
   taskRunTemplate: {}
   workspaces:
     - name: git-auth
