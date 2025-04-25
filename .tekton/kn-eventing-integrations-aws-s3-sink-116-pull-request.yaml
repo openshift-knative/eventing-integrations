@@ -54,7 +54,8 @@ spec:
               memory: 4Gi
   pipelineRef:
     name: docker-java-build
-  taskRunTemplate: {}
+  taskRunTemplate:
+    serviceAccountName: build-pipeline-kn-eventing-integrations-aws-s3-sink-116
   workspaces:
     - name: git-auth
       secret:
