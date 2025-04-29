@@ -13,5 +13,5 @@ spec:
     git:
       url: https://github.com/openshift-knative/eventing-integrations.git
       context: 
-      dockerfileUrl: openshift/ci-operator/static-images/aws-s3-sink/Dockerfile
+      dockerfileUrl: openshift/ci-operator/static-images/aws-s3-sink/hermetic/Dockerfile
       revision: release-v1.17
