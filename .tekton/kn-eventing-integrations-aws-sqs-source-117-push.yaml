@@ -17,7 +17,7 @@ metadata:
 spec:
   params:
     - name: dockerfile
-      value: openshift/ci-operator/static-images/aws-sqs-source/Dockerfile
+      value: openshift/ci-operator/static-images/aws-sqs-source/hermetic/Dockerfile
     - name: build-args
       value:
         - GO_BUILDER=brew.registry.redhat.io/rh-osbs/openshift-golang-builder:rhel_8_golang_1.23
@@ -52,8 +52,9 @@ spec:
             limits:
               memory: 4Gi
   pipelineRef:
-    name: docker-build
-  taskRunTemplate: {}
+    name: docker-java-build
+  taskRunTemplate:
+    serviceAccountName: build-pipeline-kn-eventing-integrations-aws-sqs-source-117
   workspaces:
     - name: git-auth
       secret:
