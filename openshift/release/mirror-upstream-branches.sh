@@ -16,8 +16,8 @@ cat >> "$TMPDIR"/midstream_branches <<EOF
 EOF
 cp "$TMPDIR"/midstream_branches "$TMPDIR"/upstream_branches
 
-git branch --list -a "knative-extenstions/release-1.*" | cut -f3 -d'/' | cut -f2 -d'-' >> "$TMPDIR"/upstream_branches
-git branch --list -a "openshift-knative/release-v1.*" | cut -f3 -d'/' | cut -f2 -d'v' | cut -f1,2 -d'.' >> "$TMPDIR"/midstream_branches
+git branch --list -a "upstream/release-1.*" | cut -f3 -d'/' | cut -f2 -d'-' >> "$TMPDIR"/upstream_branches
+git branch --list -a "openshift/release-v1.*" | cut -f3 -d'/' | cut -f2 -d'v' | cut -f1,2 -d'.' >> "$TMPDIR"/midstream_branches
 
 sort -o "$TMPDIR"/midstream_branches "$TMPDIR"/midstream_branches
 sort -o "$TMPDIR"/upstream_branches "$TMPDIR"/upstream_branches
