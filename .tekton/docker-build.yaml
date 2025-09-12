@@ -377,12 +377,7 @@ spec:
       operator: in
       values:
       - "false"
-  - matrix:
-      params:
-      - name: image-platform
-        value:
-        - $(params.build-platforms)
-    name: clair-scan
+  - name: clair-scan
     params:
     - name: image-digest
       value: $(tasks.build-image-index.results.IMAGE_DIGEST)
@@ -451,11 +446,6 @@ spec:
       operator: in
       values:
       - "false"
-    matrix:
-      params:
-      - name: image-arch
-        value:
-        - $(params.build-platforms)
   - name: sast-shell-check
     params:
     - name: image-digest
