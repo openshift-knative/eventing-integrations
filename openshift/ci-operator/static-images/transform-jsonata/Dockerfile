@@ -35,7 +35,8 @@ LABEL \
       description="Red Hat OpenShift Serverless 1 Eventing Integrations Transform JSONata" \
       io.k8s.display-name="Red Hat OpenShift Serverless 1 Eventing Integrations Transform JSONata" \
       io.k8s.description="Red Hat OpenShift Serverless Eventing Integrations Transform JSONata" \
-      io.openshift.tags=transform-jsonata
+      io.openshift.tags=transform-jsonata \
+      cpe="cpe:/a:redhat:openshift_serverless:1.36::el8"
 
 # Copy built files and dependencies
 COPY --from=builder --chown=1001:0 /app/package.json package.json
