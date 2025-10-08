@@ -39,7 +39,7 @@ USER 185
 
 LABEL \
       com.redhat.component="openshift-serverless-1-eventing-integrations-aws-ddb-streams-source-rhel8-container" \
-      name="openshift-serverless-1/eventing-integrations-aws-ddb-streams-source-rhel8" \
+      name="openshift-serverless-1/kn-eventing-integrations-aws-ddb-streams-source-rhel8" \
       version=$VERSION \
       release=$VERSION \
       summary="Red Hat OpenShift Serverless 1 Eventing Integrations AWS DynamoDB Streams Source" \
@@ -47,7 +47,8 @@ LABEL \
       description="Red Hat OpenShift Serverless 1 Eventing Integrations AWS DynamoDB Streams Source" \
       io.k8s.display-name="Red Hat OpenShift Serverless 1 Eventing Integrations AWS DynamoDB Streams Source" \
       io.k8s.description="Red Hat OpenShift Serverless Eventing Integrations AWS DynamoDB Streams Source" \
-      io.openshift.tags=aws-ddb-streams-source
+      io.openshift.tags=aws-ddb-streams-source \
+      cpe="cpe:/a:redhat:openshift_serverless:1.36::el8"
 
 COPY --from=builder --chown=185 /build/aws-ddb-streams-source/target/quarkus-app/lib/ /deployments/lib/
 COPY --from=builder --chown=185 /build/aws-ddb-streams-source/target/quarkus-app/*.jar /deployments/
