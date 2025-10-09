@@ -14,8 +14,8 @@
 # limitations under the License.
 #
 
-ARG JAVA_BUILDER=registry.access.redhat.com/ubi8/openjdk-21
-ARG JAVA_RUNTIME=registry.access.redhat.com/ubi8/openjdk-21-runtime
+ARG JAVA_BUILDER=registry.access.redhat.com/ubi9/openjdk-21
+ARG JAVA_RUNTIME=registry.access.redhat.com/ubi9/openjdk-21-runtime
 ARG DEPS_IMAGE
 
 FROM $DEPS_IMAGE AS deps
@@ -39,7 +39,7 @@ USER 185
 
 LABEL \
       com.redhat.component="openshift-serverless-1-eventing-integrations-aws-sns-sink-rhel8-container" \
-      name="openshift-serverless-1/eventing-integrations-aws-sns-sink-rhel8" \
+      name="openshift-serverless-1/kn-eventing-integrations-aws-sns-sink-rhel8" \
       version=$VERSION \
       release=$VERSION \
       summary="Red Hat OpenShift Serverless 1 Eventing Integrations AWS SNS Sink" \
@@ -47,7 +47,8 @@ LABEL \
       description="Red Hat OpenShift Serverless 1 Eventing Integrations AWS SNS Sink" \
       io.k8s.display-name="Red Hat OpenShift Serverless 1 Eventing Integrations AWS SNS Sink" \
       io.k8s.description="Red Hat OpenShift Serverless Eventing Integrations AWS SNS Sink" \
-      io.openshift.tags=aws-sns-sink
+      io.openshift.tags=aws-sns-sink \
+      cpe="cpe:/a:redhat:openshift_serverless:1.37::el9"
 
 COPY --from=builder --chown=185 /build/aws-sns-sink/target/quarkus-app/lib/ /deployments/lib/
 COPY --from=builder --chown=185 /build/aws-sns-sink/target/quarkus-app/*.jar /deployments/

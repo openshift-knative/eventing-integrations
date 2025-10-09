@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/ubi8/openjdk-21 as builder
+FROM registry.access.redhat.com/ubi9/openjdk-21 as builder
 
 WORKDIR /build
 
@@ -21,7 +21,7 @@ COPY . .
 
 RUN mvn package -pl=log-sink -Drelease -am -DskipTests -Deditorconfig.skip --no-transfer-progress
 
-FROM registry.access.redhat.com/ubi8/openjdk-21-runtime as running
+FROM registry.access.redhat.com/ubi9/openjdk-21-runtime as running
 
 USER 185
 COPY --from=builder --chown=185 /build/log-sink/target/quarkus-app/lib/ /deployments/lib/
