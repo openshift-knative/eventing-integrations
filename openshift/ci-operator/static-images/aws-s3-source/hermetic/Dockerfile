@@ -14,8 +14,8 @@
 # limitations under the License.
 #
 
-ARG JAVA_BUILDER=registry.access.redhat.com/ubi8/openjdk-21
-ARG JAVA_RUNTIME=registry.access.redhat.com/ubi8/openjdk-21-runtime
+ARG JAVA_BUILDER=registry.access.redhat.com/ubi9/openjdk-21
+ARG JAVA_RUNTIME=registry.access.redhat.com/ubi9/openjdk-21-runtime
 ARG DEPS_IMAGE
 
 FROM $DEPS_IMAGE AS deps
@@ -38,8 +38,8 @@ ARG VERSION=""
 USER 185
 
 LABEL \
-      com.redhat.component="openshift-serverless-1-eventing-integrations-aws-s3-source-rhel8-container" \
-      name="openshift-serverless-1/eventing-integrations-aws-s3-source-rhel8" \
+      com.redhat.component="openshift-serverless-1-eventing-integrations-aws-s3-source-rhel9-container" \
+      name="openshift-serverless-1/kn-eventing-integrations-aws-s3-source-rhel9" \
       version=$VERSION \
       release=$VERSION \
       summary="Red Hat OpenShift Serverless 1 Eventing Integrations AWS S3 Source" \
@@ -48,6 +48,7 @@ LABEL \
       io.k8s.display-name="Red Hat OpenShift Serverless 1 Eventing Integrations AWS S3 Source" \
       io.k8s.description="Red Hat OpenShift Serverless Eventing Integrations AWS S3 Source" \
       io.openshift.tags=aws-s3-source
+      cpe="cpe:/a:redhat:openshift_serverless:1.37::el9"
 
 COPY --from=builder --chown=185 /build/aws-s3-source/target/quarkus-app/lib/ /deployments/lib/
 COPY --from=builder --chown=185 /build/aws-s3-source/target/quarkus-app/*.jar /deployments/

@@ -1,5 +1,5 @@
-ARG NODE_BUILDER=registry.access.redhat.com/ubi8/nodejs-20
-ARG NODE_RUNTIME=registry.access.redhat.com/ubi8/nodejs-20
+ARG NODE_BUILDER=registry.access.redhat.com/ubi9/nodejs-20
+ARG NODE_RUNTIME=registry.access.redhat.com/ubi9/nodejs-20
 
 FROM $NODE_BUILDER AS builder
 
@@ -26,8 +26,8 @@ ARG VERSION=""
 WORKDIR /app
 
 LABEL \
-      com.redhat.component="openshift-serverless-1-kn-eventing-integrations-transform-jsonata-rhel8-container" \
-      name="openshift-serverless-1/kn-eventing-integrations-transform-jsonata-rhel8" \
+      com.redhat.component="openshift-serverless-1-kn-eventing-integrations-transform-jsonata-rhel9-container" \
+      name="openshift-serverless-1/kn-eventing-integrations-transform-jsonata-rhel9" \
       version=$VERSION \
       release=$VERSION \
       summary="Red Hat OpenShift Serverless 1 Eventing Integrations Transform JSONata" \
@@ -35,7 +35,8 @@ LABEL \
       description="Red Hat OpenShift Serverless 1 Eventing Integrations Transform JSONata" \
       io.k8s.display-name="Red Hat OpenShift Serverless 1 Eventing Integrations Transform JSONata" \
       io.k8s.description="Red Hat OpenShift Serverless Eventing Integrations Transform JSONata" \
-      io.openshift.tags=transform-jsonata
+      io.openshift.tags=transform-jsonata \
+      cpe="cpe:/a:redhat:openshift_serverless:1.37::el9"
 
 # Copy built files and dependencies
 COPY --from=builder --chown=1001:0 /app/package.json package.json
