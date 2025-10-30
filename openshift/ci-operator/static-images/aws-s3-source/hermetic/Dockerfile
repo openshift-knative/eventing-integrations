@@ -48,6 +48,7 @@ LABEL \
       io.k8s.display-name="Red Hat OpenShift Serverless 1 Eventing Integrations AWS S3 Source" \
       io.k8s.description="Red Hat OpenShift Serverless Eventing Integrations AWS S3 Source" \
       io.openshift.tags=aws-s3-source \
+      vendor="Red Hat, Inc." \
       cpe="cpe:/a:redhat:openshift_serverless:1.37::el9"
 
 COPY --from=builder --chown=185 /build/aws-s3-source/target/quarkus-app/lib/ /deployments/lib/
