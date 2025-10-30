@@ -25,7 +25,7 @@ WORKDIR /build
 
 COPY . .
 
-RUN mvn -pl=log-sink -Drelease -am -DskipTests --no-transfer-progress
+RUN mvn package -pl=log-sink -Drelease -am -DskipTests --no-transfer-progress
 
 FROM $JAVA_RUNTIME AS running
 ARG VERSION=""
