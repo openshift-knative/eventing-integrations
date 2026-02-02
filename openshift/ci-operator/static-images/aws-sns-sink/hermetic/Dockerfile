@@ -33,8 +33,8 @@ ARG VERSION=""
 USER 185
 
 LABEL \
-      com.redhat.component="openshift-serverless-1-eventing-integrations-aws-sns-sink-rhel8-container" \
-      name="openshift-serverless-1/kn-eventing-integrations-aws-sns-sink-rhel8" \
+      com.redhat.component="openshift-serverless-1-eventing-integrations-aws-sns-sink-rhel9-container" \
+      name="openshift-serverless-1/kn-eventing-integrations-aws-sns-sink-rhel9" \
       version=$VERSION \
       release=$VERSION \
       summary="Red Hat OpenShift Serverless 1 Eventing Integrations AWS SNS Sink" \
