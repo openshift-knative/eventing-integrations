@@ -44,7 +44,7 @@ LABEL \
       io.k8s.description="Red Hat OpenShift Serverless Eventing Integrations AWS S3 Sink" \
       io.openshift.tags=aws-s3-sink \
       vendor="Red Hat, Inc." \
-      cpe="cpe:/a:redhat:openshift_serverless:1.37::el8"
+      cpe="cpe:/a:redhat:openshift_serverless:1.37::el9"
 
 COPY --from=builder --chown=185 /build/aws-s3-sink/target/quarkus-app/lib/ /deployments/lib/
 COPY --from=builder --chown=185 /build/aws-s3-sink/target/quarkus-app/*.jar /deployments/
