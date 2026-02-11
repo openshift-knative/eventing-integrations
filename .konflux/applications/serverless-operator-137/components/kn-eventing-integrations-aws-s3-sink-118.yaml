@@ -4,14 +4,14 @@ metadata:
   annotations:
     build.appstudio.openshift.io/pipeline: '{"name":"docker-build","bundle":"latest"}'
     build.appstudio.openshift.io/request: configure-pac-no-mr
-  name: kn-eventing-integrations-timer-source-118
+  name: kn-eventing-integrations-aws-s3-sink-118
 spec:
-  componentName: kn-eventing-integrations-timer-source-118
-  application: serverless-operator-138
+  componentName: kn-eventing-integrations-aws-s3-sink-118
+  application: serverless-operator-137
    
   source:
     git:
       url: https://github.com/openshift-knative/eventing-integrations.git
       context: 
-      dockerfileUrl: openshift/ci-operator/static-images/timer-source/hermetic/Dockerfile
+      dockerfileUrl: openshift/ci-operator/static-images/aws-s3-sink/hermetic/Dockerfile
       revision: release-v1.18
