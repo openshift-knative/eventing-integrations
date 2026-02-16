@@ -16,9 +16,6 @@
 
 ARG JAVA_BUILDER=registry.access.redhat.com/ubi8/openjdk-21
 ARG JAVA_RUNTIME=registry.access.redhat.com/ubi8/openjdk-21-runtime
-ARG DEPS_IMAGE
-
-FROM $DEPS_IMAGE AS deps
 
 FROM $JAVA_BUILDER AS builder
 
@@ -26,11 +23,9 @@ USER root
 
 WORKDIR /build
 
-COPY --from=deps /third_party/maven/ /third_party/maven/
-
 COPY . .
 
-RUN mvn -Dmaven.repo.local=/third_party/maven --offline package -pl=aws-sns-sink -Drelease -am -DskipTests --no-transfer-progress
+RUN mvn package -pl=aws-sns-sink -Drelease -am -DskipTests --no-transfer-progress
 
 FROM $JAVA_RUNTIME AS running
 ARG VERSION=""
@@ -47,7 +42,9 @@ LABEL \
       description="Red Hat OpenShift Serverless 1 Eventing Integrations AWS SNS Sink" \
       io.k8s.display-name="Red Hat OpenShift Serverless 1 Eventing Integrations AWS SNS Sink" \
       io.k8s.description="Red Hat OpenShift Serverless Eventing Integrations AWS SNS Sink" \
-      io.openshift.tags=aws-sns-sink
+      io.openshift.tags=aws-sns-sink \
+      vendor="Red Hat, Inc." \
+      cpe="cpe:/a:redhat:openshift_serverless:0.0::el0"
 
 COPY --from=builder --chown=185 /build/aws-sns-sink/target/quarkus-app/lib/ /deployments/lib/
 COPY --from=builder --chown=185 /build/aws-sns-sink/target/quarkus-app/*.jar /deployments/
