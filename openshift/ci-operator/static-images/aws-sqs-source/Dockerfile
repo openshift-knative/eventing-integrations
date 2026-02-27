@@ -12,6 +12,7 @@ COPY aws-sns-sink/pom.xml aws-sns-sink/pom.xml
 COPY aws-sqs-sink/pom.xml aws-sqs-sink/pom.xml
 COPY aws-sqs-source/pom.xml aws-sqs-source/pom.xml
 COPY log-sink/pom.xml log-sink/pom.xml
+COPY jsonata-transformer/pom.xml jsonata-transformer/pom.xml
 COPY timer-source/pom.xml timer-source/pom.xml
 COPY tools/ tools/
 
