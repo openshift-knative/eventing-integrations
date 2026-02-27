@@ -6,6 +6,7 @@ USER root
 
 COPY pom.xml .
 COPY aws-ddb-streams-source/pom.xml aws-ddb-streams-source/pom.xml
+COPY aws-eventbridge-sink/pom.xml aws-eventbridge-sink/pom.xml
 COPY aws-s3-sink/pom.xml aws-s3-sink/pom.xml
 COPY aws-s3-source/pom.xml aws-s3-source/pom.xml
 COPY aws-sns-sink/pom.xml aws-sns-sink/pom.xml
