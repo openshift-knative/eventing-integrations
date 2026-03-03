@@ -10,12 +10,18 @@ GOFLAGS='' go run github.com/openshift-knative/hack/cmd/generate@latest \
 
 # Update CPE labels in the static Dockerfiles with computed versions
 release=$(yq r "${repo_root_dir}/openshift/project.yaml" project.tag)
+
+# Skip label updates for release-next builds
+if [ "${release}" = "knative-nightly" ]; then
+  exit 0
+fi
+
 release=${release/knative-/}
 
-so_branch=$( GOFLAGS='' go run github.com/openshift-knative/hack/cmd/sobranch@latest --upstream-version "${release}")
+so_branch=$( GOFLAGS='' go run github.com/openshift-knative/hack/cmd/sobranch@latest --upstream-version "${release}" || echo "main")
 so_release=${so_branch/release-/}
 
-rhel_version=$( GOFLAGS='' go run github.com/openshift-knative/hack/cmd/sorhel@latest --so-version "${so_release}")
+rhel_version=$( GOFLAGS='' go run github.com/openshift-knative/hack/cmd/sorhel@latest --so-version "${so_release}" || echo "9")
 
 for dockerfile in openshift/ci-operator/static-images/*/hermetic/Dockerfile; do
   if [ -f "$dockerfile" ]; then
