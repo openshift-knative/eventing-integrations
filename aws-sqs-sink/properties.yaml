@@ -63,7 +63,7 @@ spec:
               type: string
               title: Profile Credentials Name
               description: If using a profile credentials provider this parameter
-                will set the profile name.
+                sets the profile name.
             sessionToken:
               type: string
               title: Session Token

@@ -4,12 +4,12 @@
 |queueNameOrArn
 |yes
 |CAMEL_KAMELET_AWS_SQS_SOURCE_QUEUE_NAME_OR_ARN=<the_queueNameOrArn>
-|The SQS Queue Name or ARN
+|The SQS Queue Name or ARN.
 
 |deleteAfterRead
 |no
 |CAMEL_KAMELET_AWS_SQS_SOURCE_DELETE_AFTER_READ=true
-|Delete messages after consuming them
+|Delete messages after consuming them.
 
 |accessKey
 |no
@@ -39,12 +39,12 @@
 |protocol
 |no
 |CAMEL_KAMELET_AWS_SQS_SOURCE_PROTOCOL=https
-|The underlying protocol used to communicate with SQS
+|The underlying protocol used to communicate with SQS.
 
 |queueURL
 |no
 |CAMEL_KAMELET_AWS_SQS_SOURCE_QUEUE_U_R_L=<the_queueURL>
-|The full SQS Queue URL (required if using KEDA)
+|The full SQS Queue URL.
 
 |useDefaultCredentialsProvider
 |no
@@ -64,7 +64,7 @@
 |profileCredentialsName
 |no
 |CAMEL_KAMELET_AWS_SQS_SOURCE_PROFILE_CREDENTIALS_NAME=<the_profileCredentialsName>
-|If using a profile credentials provider this parameter will set the profile name.
+|If using a profile credentials provider this parameter sets the profile name.
 
 |sessionToken
 |no
@@ -84,7 +84,7 @@
 |delay
 |no
 |CAMEL_KAMELET_AWS_SQS_SOURCE_DELAY=500
-|The number of milliseconds before the next poll of the selected stream
+|The number of milliseconds before the next poll of the selected stream.
 
 |greedy
 |no
