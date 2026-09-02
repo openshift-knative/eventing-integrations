@@ -44,7 +44,7 @@
 |profileCredentialsName
 |no
 |CAMEL_KAMELET_AWS_S3_SINK_PROFILE_CREDENTIALS_NAME=<the_profileCredentialsName>
-|If using a profile credentials provider this parameter will set the profile name.
+|If using a profile credentials provider this parameter sets the profile name.
 
 |sessionToken
 |no

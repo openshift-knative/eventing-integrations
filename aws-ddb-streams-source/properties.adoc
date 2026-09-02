@@ -29,7 +29,7 @@
 |useDefaultCredentialsProvider
 |no
 |CAMEL_KAMELET_AWS_DDB_STREAMS_SOURCE_USE_DEFAULT_CREDENTIALS_PROVIDER=false
-|If true, the DynamoDB client loads credentials through a default credentials provider. If false, it uses the basic authentication method (access key and secret key).
+|If `true`, the DynamoDB client loads credentials through a default credentials provider. If false, it uses the basic authentication method (access key and secret key).
 
 |useProfileCredentialsProvider
 |no
@@ -44,7 +44,7 @@
 |profileCredentialsName
 |no
 |CAMEL_KAMELET_AWS_DDB_STREAMS_SOURCE_PROFILE_CREDENTIALS_NAME=<the_profileCredentialsName>
-|If using a profile credentials provider this parameter will set the profile name.
+|If using a profile credentials provider this parameter sets the profile name.
 
 |sessionToken
 |no
