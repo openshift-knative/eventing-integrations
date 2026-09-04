@@ -42,7 +42,7 @@ spec:
         - 1.37.2
         - latest
     - name: prefetch-input
-      value: '[{"path":".","type":"gomod"},{"path":"transform-jsonata","type":"npm"}]'
+      value: '[{"path":"transform-jsonata","type":"npm"}]'
   taskRunSpecs:
     - pipelineTaskName: sast-shell-check
       stepSpecs:

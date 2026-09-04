@@ -16,9 +16,29 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>archetype-source</module>
-        <module>archetype-sink</module>
         <module>maven-plugin</module>
     </modules>
+
+    <profiles>
+        <!-- The archetype modules use packaging=maven-archetype, which requires the
+             archetype-packaging build extension merely to READ their POMs. Maven scans
+             every module in the reactor before -pl/-am selects what to build, so these
+             modules are always read even though no connector depends on them. In hermetic
+             builds the extension is not prefetched, so scanning them fails offline. Gate
+             them behind a profile that is active by default but disabled with
+             -DskipArchetypes in the hermetic image builds. -->
+        <profile>
+            <id>archetypes</id>
+            <activation>
+                <property>
+                    <name>!skipArchetypes</name>
+                </property>
+            </activation>
+            <modules>
+                <module>archetype-source</module>
+                <module>archetype-sink</module>
+            </modules>
+        </profile>
+    </profiles>
 
 </project>
