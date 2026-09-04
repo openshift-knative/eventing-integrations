@@ -10,3 +10,6 @@ target
 
 .camel-jbang
 .camel-jbang-run
+
+__pycache__/
+*.pyc

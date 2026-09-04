@@ -24,7 +24,7 @@ USER root
 WORKDIR /build
 
 COPY . .
-RUN mvn package -pl=aws-s3-source -Drelease -am -DskipTests --no-transfer-progress
+RUN mvn package -pl=aws-s3-source -Drelease -am -DskipTests -DskipArchetypes --no-transfer-progress
 
 FROM $JAVA_RUNTIME AS running
 ARG VERSION=""

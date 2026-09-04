@@ -31,7 +31,7 @@ spec:
     - name: git-url
       value: '{{source_url}}'
     - name: hermetic
-      value: "false"
+      value: "true"
     - name: output-image
       value: quay.io/redhat-user-workloads/ocp-serverless-tenant/serverless-operator-137/kn-eventing-integrations-aws-sqs-source:{{revision}}
     - name: revision
@@ -42,7 +42,7 @@ spec:
         - 1.37.2
         - latest
     - name: prefetch-input
-      value: '[{"path":".","type":"gomod"},{"path":"transform-jsonata","type":"npm"}]'
+      value: '[{"path":"aws-sqs-source","type":"x-maven"},{"path":"tools/maven-plugin","type":"x-maven"},{"path":"tools","type":"x-maven"},{"path":".","type":"x-maven"}]'
   taskRunSpecs:
     - pipelineTaskName: sast-shell-check
       stepSpecs:

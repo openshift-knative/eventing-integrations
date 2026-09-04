@@ -43,7 +43,7 @@ spec:
     - name: revision
       value: '{{revision}}'
     - name: prefetch-input
-      value: '[{"path":".","type":"gomod"},{"path":"transform-jsonata","type":"npm"}]'
+      value: '[{"path":"transform-jsonata","type":"npm"}]'
   taskRunSpecs:
     - pipelineTaskName: sast-shell-check
       stepSpecs:
