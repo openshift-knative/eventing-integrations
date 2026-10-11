@@ -266,6 +266,16 @@ app.post("/", async (req, res) => {
             }
         }, processSpanContext);
 
+        // Abort the forwarded request on client disconnect. Avoid `req.signal`:
+        // Node 24.16-24.19 aborts it after the body is read, before the response,
+        // failing every request. Use the response lifecycle instead.
+        const kSinkAbortController = new AbortController()
+        res.on('close', () => {
+            if (!res.writableFinished) {
+                kSinkAbortController.abort()
+            }
+        })
+
         const response = await context.with(
             trace.setSpan(context.active(), kSinkSendSpan),
             async () => {
@@ -277,7 +287,7 @@ app.post("/", async (req, res) => {
                         headers: k_sink_request_headers,
                         body: JSON.stringify(transformed),
                         redirect: 'error',
-                        signal: req.signal,
+                        signal: kSinkAbortController.signal,
                     })
                     kSinkSendSpan.setAttributes({
                         'http.status_code': result.status,
