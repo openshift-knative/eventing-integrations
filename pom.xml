@@ -25,7 +25,7 @@
         <citrus.version>4.5.1</citrus.version>
         <jetty.version>12.1.6</jetty.version>
         <quarkus.platform.group-id>io.quarkus.platform</quarkus.platform.group-id>
-        <quarkus.platform.version>3.33.3.1</quarkus.platform.version>
+        <quarkus.platform.version>3.33.4.1</quarkus.platform.version>
         <quarkus.kubernetes-client.generate-rbac>false</quarkus.kubernetes-client.generate-rbac>
         <quarkus.container-image.insecure>true</quarkus.container-image.insecure>
         <quarkus.container-image.registry>localhost:5001</quarkus.container-image.registry>
