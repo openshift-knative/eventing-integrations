@@ -29,6 +29,7 @@
   },
   "overrides": {
     "fast-uri": "^3.1.6",
-    "proxy-addr": "^2.0.8"
+    "proxy-addr": "^2.0.8",
+    "body-parser": "^1.20.9"
   }
 }
